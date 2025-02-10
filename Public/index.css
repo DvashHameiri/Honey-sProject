@@ -13,9 +13,9 @@ body {
     background-color: #e4e4e4;
     display: flex;
     height: 100vh;
-    padding-top: 20px;
-    padding-bottom: 20%;
-    padding-left: 10px;
+    padding: 2vh 5vh; /* שמירת מרווחים מסביב */
+    flex-direction: row; /* מציב את ה-sidebar והתוכן אופקית */
+    padding-left: 1vh;
 }
 
 .page-header{
@@ -40,6 +40,7 @@ body {
     border-left: 1px solid rgba(145, 158, 171, 0.12);
     background: #1D2330;
     flex-shrink: 0;
+    position: fixed;
 }
 
 /* Menu Items */
@@ -90,15 +91,62 @@ body {
     font-weight: bold;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: calc(100% - 90px); /* שומר על ריווח קבוע מה-sidebar */
+    max-width: 1100px; /* מגביל את הרוחב כך שלא יהיה רחב מדי */
+    min-width: 600px; /* מונע שהתוכן יהיה קטן מדי */
+    margin-left: 40px; /* מבטיח שהתוכן תמיד רחוק מה-sidebar */
+    padding: 20px;
+}
+
+
+/* מדיה קווריז למסכים קטנים – Sidebar תמיד גלוי */
+@media (max-width: 1024px) {
+    .main-container {
+        width: calc(100% - 70px); /* מצמצם קצת במסכים בינוניים */
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        width: calc(100% - 66px); /* התוכן נשאר בצד ימין של ה-sidebar */
+        margin-left: 66px; /* מרחק קבוע מה-sidebar */
+        padding: 10px;
+    }
+}
+
+
+/* מדיה קווריז למסכים ממש קטנים (מובייל) */
+@media (max-width: 480px) {
+    .page-header {
+        font-size: 16px; /* מקטין כותרות כדי שלא יהיו גדולות מדי */
+    }
+
+    .add-button {
+        width: 35px;
+        height: 35px;
+        top: 10px;
+        right: 10px;
+    }
+}
+
 /* הקונטיינר של הטבלה */
 .table-container {
-    width: 85%;
-    margin: 30px auto;
+    width: 90%;
+    max-width: 1200px; /* מקסימום גודל כדי שלא יהיה רחב מדי */
+    min-width: 300px; /* מינימום גודל כדי שלא יהיה קטן מדי */
+    margin: auto;
     background-color: white;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     position: relative; /* הכפתור יישאר בתוך הקונטיינר */
+    overflow-x: auto; /* מאפשר גלילה אם הטבלה רחבה מדי */
 }
 
 /* עיצוב כותרת */
@@ -143,9 +191,10 @@ body {
 
 /* Table Design */
 table {
-    width: 80%;
+    width: 100%;
+    min-width: 600px; /* מבטיח שהטבלה לא תהיה קטנה מדי */
     margin: 20px auto;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
     background-color: white;
     border-radius: 8px;
@@ -175,3 +224,4 @@ tbody tr:not(:first-child) td {
 tbody tr:last-child td {
     border-bottom: none;
 }
+
