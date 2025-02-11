@@ -13,34 +13,35 @@ body {
     background-color: #e4e4e4;
     display: flex;
     height: 100vh;
-    padding: 2vh 5vh; /* שמירת מרווחים מסביב */
+    padding: 2vh clamp(10px, 5vw, 50px); /* ריווח גמיש */
     flex-direction: row; /* מציב את ה-sidebar והתוכן אופקית */
     padding-left: 1vh;
 }
 
 .page-header{
-    font-size: 20px;
+    font-size: clamp(16px, 2vw, 24px); /* כותרת שגדלה בהתאם למסך */
     font-weight: bold;
     margin-bottom: 15px;
     color: #1D2330; /* צבע טקסט */
     text-align: left;
-    margin-left: 35px;
+    margin-left: clamp(20px, 3vw, 40px); /* ריווח דינמי */
 }
 
 /* Sidebar */
 .sidebar {
     display: flex;
-    width: 66px;
-    height: 85%;
+    width: clamp(60px, 6vw, 70px); /* רוחב גמיש */
+    height: auto;
+    min-height: 85vh; /* מבטיח שלא יהיה קטן מדי */
     padding: 20px 0px;
     flex-direction: column;
     align-items: center;
-    gap: 55px;
+    gap: clamp(30px, 6vh, 55px); /* התאמה דינמית של הרווחים */
     border-radius: 10px;
     border-left: 1px solid rgba(145, 158, 171, 0.12);
     background: #1D2330;
     flex-shrink: 0;
-    position: fixed;
+    position: relative; /* גורם לו להיות חלק מהזרימה הרגילה של הדף */
 }
 
 /* Menu Items */
@@ -96,43 +97,11 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    width: calc(100% - 90px); /* שומר על ריווח קבוע מה-sidebar */
+    width: calc(100% - clamp(60px, 6vw, 90px)); /* מתחשב ב-sidebar */
     max-width: 1100px; /* מגביל את הרוחב כך שלא יהיה רחב מדי */
     min-width: 600px; /* מונע שהתוכן יהיה קטן מדי */
-    margin-left: 40px; /* מבטיח שהתוכן תמיד רחוק מה-sidebar */
+    margin-left: clamp(20px, 4vw, 40px); /* התאמה חלקה בלי קפיצות */
     padding: 20px;
-}
-
-
-/* מדיה קווריז למסכים קטנים – Sidebar תמיד גלוי */
-@media (max-width: 1024px) {
-    .main-container {
-        width: calc(100% - 70px); /* מצמצם קצת במסכים בינוניים */
-        margin-left: 70px;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-container {
-        width: calc(100% - 66px); /* התוכן נשאר בצד ימין של ה-sidebar */
-        margin-left: 66px; /* מרחק קבוע מה-sidebar */
-        padding: 10px;
-    }
-}
-
-
-/* מדיה קווריז למסכים ממש קטנים (מובייל) */
-@media (max-width: 480px) {
-    .page-header {
-        font-size: 16px; /* מקטין כותרות כדי שלא יהיו גדולות מדי */
-    }
-
-    .add-button {
-        width: 35px;
-        height: 35px;
-        top: 10px;
-        right: 10px;
-    }
 }
 
 /* הקונטיינר של הטבלה */
@@ -143,7 +112,7 @@ body {
     margin: auto;
     background-color: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: clamp(10px, 2vw, 20px); /* התאמת הריווח */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     position: relative; /* הכפתור יישאר בתוך הקונטיינר */
     overflow-x: auto; /* מאפשר גלילה אם הטבלה רחבה מדי */
@@ -151,17 +120,17 @@ body {
 
 /* עיצוב כותרת */
 .table-title {
-    font-size: 20px;
+    font-size: clamp(20px, 3vw, 28px);
     font-weight: bold;
     color: #333;
-    margin-left: 15px auto;
-    margin-bottom: 25px auto;
+    margin-left: clamp(8px, 1vw, 10px);
+    margin-bottom: clamp(10px, 2vw, 25px);
 }
 
 /* כפתור הוספה – מיקום בפינה הימנית העליונה */
 .add-button {
-    width: 40px;
-    height: 40px;
+    width: clamp(35px, 4vw, 40px);
+    height: clamp(35px, 4vw, 40px);
     border-radius: 50%;
     border: none;
     background-color: rgba(119, 192, 246, 0.4); /* enable = 40% */
@@ -174,8 +143,8 @@ body {
     justify-content: center;
     transition: background-color 0.2s ease-in-out;
     position: absolute;
-    top: 30px; /* מרחק מהחלק העליון */
-    right: 30px; /* מרחק מהחלק הימני */
+    top: clamp(10px, 3vh, 30px);
+    right: clamp(10px, 3vw, 30px);
 }
 
 /* מצב רחף (hover) */
@@ -192,7 +161,7 @@ body {
 /* Table Design */
 table {
     width: 100%;
-    min-width: 600px; /* מבטיח שהטבלה לא תהיה קטנה מדי */
+    min-width: 400px; /* מבטיח שהטבלה לא תהיה קטנה מדי */
     margin: 20px auto;
     border-collapse: collapse;
     border-spacing: 0;
@@ -224,4 +193,5 @@ tbody tr:not(:first-child) td {
 tbody tr:last-child td {
     border-bottom: none;
 }
+
 
