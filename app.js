@@ -11,7 +11,9 @@ app.get('/members', async(req,res)=>{
     res.json(await myRepository.GetMembersBalanceDetails());
 });
 
-
+app.get('/', async(req,res)=>{
+    res.json(await myRepository.GetMembersBalanceDetails());
+});
 
 
 

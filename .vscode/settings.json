@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/5a343993-baa1-43a3-a3cf-626445d53f1a/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/HoneyPJ",
+    "appService.deploySubpath": "."
+}
