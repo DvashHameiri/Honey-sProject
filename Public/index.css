@@ -193,5 +193,3 @@ tbody tr:not(:first-child) td {
 tbody tr:last-child td {
     border-bottom: none;
 }
-
-
