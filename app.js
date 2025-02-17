@@ -25,6 +25,9 @@ app.get('/', async(req,res)=>{
 
 app.use(express.static('public'));
 //=========================
-app.listen(3001, function () {
-    console.log('My app is listening on port 3001!');
+
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`My app is listening on port ${PORT}`);
 });
